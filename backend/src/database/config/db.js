@@ -1,13 +1,12 @@
 const { Sequelize } = require('sequelize');
 const globalConstants = require('../../const/globalConstants');
-require('dotenv').config();
 
 const sequelize = new Sequelize({
+  dialect: "postgres",
   username: globalConstants.DB_USER,
-  password: process.env.DB_PASSWORD,
+  password: globalConstants.DB_PASSWORD,
   database: globalConstants.DB_NAME,
-  logging: false,
-  dialect: 'postgres',
+  logging: false
 });
 
 const connectDB = async () => {
