@@ -3,7 +3,7 @@ const errorsConstants = require('../const/errors')
 
 module.exports = {
 
-    listar: (isLocal) => async (req, res) => {
+    listar: async (req, res) => {
         const books = await models.libro.findAll();
 
         res.json({
