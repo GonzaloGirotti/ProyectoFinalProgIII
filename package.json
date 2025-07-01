@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./backend/index.js",
+    "start": "nodemon ./index.js",
     "db:seed": "npx sequelize-cli db:seed:all --config ./backend/src/database/config/config.js --seeders-path ./backend/src/database/seeders"
   },
   "repository": {
