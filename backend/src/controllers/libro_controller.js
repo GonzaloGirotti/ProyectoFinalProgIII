@@ -41,20 +41,20 @@ module.exports = {
         })
     },
 
-    // eliminar: async (req, res, next) => {
-    //     const patient = await models.paciente.findOne({
-    //         where: {
-    //             id: req.params.idPaciente
-    //         }
-    //     })
+    eliminar: async (req, res, next) => {
+        const book = await models.libro.findOne({
+            where: {
+                id: req.params.idLibro
+            }
+        })
 
-    //     if (!patient) return next(errorsConstants.PacienteInexistente)
+        if (!book) return next(errorsConstants.LibroInexistente)
 
-    //     await patient.destroy()
+        await book.destroy()
 
-    //     res.json({
-    //         success: true,
-    //         message: 'Paciente eliminado correctamente'
-    //     })
-    // }
+        res.json({
+            success: true,
+            message: 'Libro eliminado correctamente'
+        })
+    }
 }

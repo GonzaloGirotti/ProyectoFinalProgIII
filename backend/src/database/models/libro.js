@@ -21,6 +21,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(100),
             allowNull: false
         },
+        genero: {
+            type: DataTypes.STRING(50),
+            allowNull: false
+        },
+        estado_lectura: {
+            type: DataTypes.STRING(50),
+            allowNull: false,
+            defaultValue: 'No leído' // Valor por defecto
+        },
         fecha_publicacion: {
             type: DataTypes.DATE,
             allowNull: false

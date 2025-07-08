@@ -13,6 +13,8 @@ module.exports = {
                     titulo: "Cien años de soledad",
                     autor: "Gabriel García Márquez",
                     editorial: "Editorial Sudamericana",
+                    genero: "Realismo mágico",
+                    estado_lectura: "Leído",
                     fecha_publicacion: new Date("1967-06-05")
                 }
             }),
