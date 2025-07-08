@@ -3,9 +3,11 @@ const globalConstants = require('../../const/globalConstants');
 
 const sequelize = new Sequelize({
   dialect: "postgres",
+  port: globalConstants.DB_PORT,
   username: globalConstants.DB_USER,
   password: globalConstants.DB_PASSWORD,
   database: globalConstants.DB_NAME,
+  host: globalConstants.DB_HOST,
   logging: false
 });
 

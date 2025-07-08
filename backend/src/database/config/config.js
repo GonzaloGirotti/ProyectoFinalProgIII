@@ -2,12 +2,13 @@ const globalConstants = require('../../const/globalConstants');
 
 module.exports = {
   "development": {
-    "host": "127.0.0.1",
+    "host": globalConstants.DB_HOST,
+    "port": globalConstants.DB_PORT,
     "dialect": "postgres",
     "username": globalConstants.DB_USER,
     "password": globalConstants.DB_PASSWORD,
     "database": globalConstants.DB_NAME,
     "logging": false
-  }
+  },
 }
 

@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - mynetwork
+  backend:
+    build:
+      context: ./backend
+    container_name: app_container
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_USER: myuser
+      DB_PASSWORD: mypassword
+      DB_NAME: mydatabase
+      DB_PORT: 5432
+    networks:
+      - mynetwork
+
+volumes:
+  pgdata:
+
+networks:
+  mynetwork:
