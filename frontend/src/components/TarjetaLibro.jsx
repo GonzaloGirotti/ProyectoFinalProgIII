@@ -15,6 +15,7 @@ const TarjetaLibro = ({ libro }) => {
       <p><strong>Autor:</strong> {libro.autor}</p>
       <p><strong>Editorial:</strong> {libro.editorial}</p>
       <p><strong>Publicado:</strong> {fecha}</p>
+      <p><strong>Género:</strong> {libro.genero}</p>
     </div>
   );
 };
