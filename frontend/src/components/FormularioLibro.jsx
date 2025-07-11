@@ -6,8 +6,7 @@ const FormularioLibro = () => {
     titulo: '',
     autor: '',
     editorial: '',
-    fecha_publicacion: '',
-    genero: ''
+    fecha_publicacion: ''
   });
 
   const handleChange = e => {

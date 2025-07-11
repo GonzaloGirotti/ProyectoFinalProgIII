@@ -7,5 +7,6 @@ router.get('/', libroController.listar)
 router.post('/', validate(libro_scheme.crearLibro), libroController.crear)
 router.get('/:idLibro', libroController.listarInfo)
 router.delete('/:idLibro', libroController.eliminar)
+router.put('/:idLibro/estado', libroController.actualizar_estado)
 
 module.exports = router

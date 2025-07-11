@@ -14,12 +14,16 @@ services:
       - "5433:5432"
     networks:
       - mynetwork
+
   backend:
     build:
       context: ./backend
     container_name: app_container
     ports:
       - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
     depends_on:
       - postgres
     environment:
@@ -30,6 +34,27 @@ services:
       DB_PORT: 5432
     networks:
       - mynetwork
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend_container
+    ports:
+      - "5174:5174"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - mynetwork
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - FAST_REFRESH=true
+      - WDS_SOCKET_HOST=localhost
+      - WDS_SOCKET_PORT=3000
+      - WDS_SOCKET_PATH=/ws
 
 volumes:
   pgdata:

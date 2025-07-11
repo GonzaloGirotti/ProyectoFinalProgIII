@@ -56,5 +56,28 @@ module.exports = {
             success: true,
             message: 'Libro eliminado correctamente'
         })
+    },
+
+    actualizar_estado: async (req, res, next) => {
+        const book = await models.libro.findOne({
+            where: {
+                id: req.params.idLibro
+            }
+        })
+
+        if (!book) return next(errorsConstants.LibroInexistente)
+
+        const { estado_lectura } = req.body;
+
+        book.estado_lectura = estado_lectura;
+        await book.save();
+
+        res.json({
+            success: true,
+            message: 'Estado de lectura actualizado correctamente',
+            data: {
+                libro: book
+            }
+        })
     }
 }
