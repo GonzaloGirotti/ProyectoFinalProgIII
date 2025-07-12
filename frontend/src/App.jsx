@@ -4,6 +4,7 @@ import FormularioLibro from './components/FormularioLibro';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './App.css';
+import FiltroGenero from './components/FiltroGenero';
 
 const App = () => {
   return (
@@ -11,6 +12,9 @@ const App = () => {
       <FormularioLibro />
       <hr />
       <h2 className='catalogo-header'>Catalogo de libros:</h2>
+      <hr />
+      <FiltroGenero />
+      <hr />
       <ListadoLibros />
     </div>
   );

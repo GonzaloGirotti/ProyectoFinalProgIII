@@ -5,7 +5,7 @@ const ListadoLibros = () => {
   const [libros, setLibros] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}`)
+    fetch(`${import.meta.env.VITE_API_URL}/libros`)
       .then(res => res.json())
       .then(data => setLibros(data.data.libros))
       .catch(err => console.error('Error cargando libros:', err));

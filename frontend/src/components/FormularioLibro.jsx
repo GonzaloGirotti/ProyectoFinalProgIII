@@ -15,7 +15,7 @@ const FormularioLibro = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    fetch(`${import.meta.env.VITE_API_URL}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/libros`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
@@ -34,22 +34,22 @@ const FormularioLibro = () => {
 
       <label htmlFor="titulo">Título</label>
       <input name="titulo" placeholder="Título" onChange={handleChange} required /><br />
-      
+
       <label htmlFor="autor">Autor</label>
       <input name="autor" placeholder="Autor" onChange={handleChange} required /><br />
-      
+
       <label htmlFor="editorial">Editorial</label>
       <input name="editorial" placeholder="Editorial" onChange={handleChange} required /><br />
-      
+
       <label htmlFor="fecha_publicacion">Fecha Publicacion</label>
       <input name="fecha_publicacion" type="date" onChange={handleChange} required /><br />
 
       <label htmlFor="genero">Genero</label>
-      <input name="genero" placeholder='Genero' onChange={handleChange} required/><br />
+      <input name="genero" placeholder='Genero' onChange={handleChange} required /><br />
 
       <button type="submit">Guardar libro</button>
     </form>
-    
+
   );
 };
 

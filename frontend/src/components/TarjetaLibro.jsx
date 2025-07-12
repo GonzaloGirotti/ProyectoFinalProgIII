@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
 
-const DropdownMenu = ({libro}) => {
+const DropdownMenu = ({ libro }) => {
   const [selectedOption, setSelectedOption] = useState(libro.estado_lectura || 'Estado');
 
   const handleSelect = (option) => {
     setSelectedOption(option);
 
     // Guardar el estado seleccionado en la base de datos
-    fetch(`${import.meta.env.VITE_API_URL}${libro.id}/estado`,
+    fetch(`${import.meta.env.VITE_API_URL}/libros/${libro.id}/estado`,
       {
         method: 'PUT',
         headers: {
