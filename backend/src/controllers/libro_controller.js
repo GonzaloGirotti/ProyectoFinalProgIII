@@ -5,14 +5,22 @@ const errorsConstants = require('../const/errors');
 
 module.exports = {
     listar: async (req, res) => {
-        const books = await models.libro.findAll();
+        try {
+            const { genero } = req.query;
 
-        res.json({
-            success: true,
-            data: {
-                libros: books
-            }
-        })
+            const where = genero ? { genero } : {};
+            const books = await models.libro.findAll({ where });
+
+            res.json({
+                success: true,
+                data: {
+                    libros: books
+                }
+            });
+        } catch (error) {
+            console.error('Error al listar libros:', error);
+            res.status(500).json({ success: false, message: 'Error al obtener libros' });
+        }
     },
 
     crear: async (req, res) => {
@@ -104,23 +112,24 @@ module.exports = {
 
     obtenerGeneros: async (req, res) => {
         try {
-            const generos = await models.libro.findAll({
+            const generosRaw = await models.libro.findAll({
                 attributes: ['genero'],
                 group: ['genero']
             });
 
-            if (!generos || generos.length === 0) {
+            const generos = generosRaw.map(item => item.genero).filter(Boolean);
+
+            if (generos.length === 0) {
                 return res.status(404).json({ success: false, message: 'No se encontraron géneros' });
             }
 
             res.json({
                 success: true,
                 data: {
-                    generos: generos
+                    generos
                 }
             });
-        }
-        catch (error) {
+        } catch (error) {
             console.error('Error al obtener géneros:', error);
             res.status(500).json({ success: false, message: 'Error al obtener géneros' });
         }

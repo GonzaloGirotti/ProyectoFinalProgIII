@@ -34,6 +34,18 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: false
         },
+        reseña: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
+        valoracion: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            validate: {
+                min: 1,
+                max: 5
+            }
+        },
     }, {
         timestamps: true,
         underscored: true,

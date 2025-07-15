@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import TarjetaLibro from './TarjetaLibro';
 
-const ListadoLibros = () => {
+const ListadoLibros = ({ genero }) => {
   const [libros, setLibros] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/libros`)
+    let url = `${import.meta.env.VITE_API_URL}/libros`;
+    if (genero) {
+      url += `?genero=${encodeURIComponent(genero)}`;
+    }
+
+    fetch(url)
       .then(res => res.json())
       .then(data => setLibros(data.data.libros))
       .catch(err => console.error('Error cargando libros:', err));
-  }, []);
+  }, [genero]);
 
   return (
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>

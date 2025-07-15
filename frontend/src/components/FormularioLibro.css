@@ -16,3 +16,17 @@ form {
     border: 1px solid #ffffff;
     border-radius: 8px;
 }
+
+.valoracion-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin: 0.5rem;
+}
+
+.label {
+    margin: 0.5rem;
+    color: white;
+    font-weight: bold;
+}

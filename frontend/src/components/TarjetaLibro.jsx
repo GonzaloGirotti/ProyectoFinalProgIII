@@ -7,7 +7,6 @@ const DropdownMenu = ({ libro }) => {
   const handleSelect = (option) => {
     setSelectedOption(option);
 
-    // Guardar el estado seleccionado en la base de datos
     fetch(`${import.meta.env.VITE_API_URL}/libros/${libro.id}/estado`,
       {
         method: 'PUT',
@@ -66,6 +65,8 @@ const TarjetaLibro = ({ libro }) => {
       <p><strong>Publicado:</strong> {fecha}</p>
       <p><strong>Género:</strong> {libro.genero}</p>
       <p><strong>Estado:</strong> {libro.estado_lectura}</p>
+      <p><strong>Reseña:</strong> {libro.reseña || 'No hay reseña disponible'}</p>
+      <p><strong>Valoración:</strong> {libro.valoracion ? '⭐'.repeat(libro.valoracion) : 'No valorado'}</p>
 
       <DropdownMenu libro={libro} />
 
